@@ -119,3 +119,36 @@ body {
     background-color: #bbd19a; 
     border-color: #bbd19a; 
 }
+
+/* --- 媒体查询：针对屏幕宽度小于 768px 的设备 (例如手机和平板) --- */
+@media (max-width: 768px) {
+    
+    /* 容器调整：移除内边距，靠左对齐 */
+    .schedule-container {
+        padding: 0;
+        justify-content: flex-start; 
+    }
+    
+    /* 表格主体：确保表格宽度足够宽（保持网格清晰）并启用横向滚动 */
+    .course-schedule {
+        width: 100%; /* 宽度占满屏幕，但同时保持最小宽度 */
+        min-width: 800px; /* 设定最小宽度，强制表格内容不会被压缩变形 */
+        display: block; /* 使得 overflow-x: auto 生效 */
+        overflow-x: auto; /* 启用横向滚动条 */
+    }
+
+    /* 表头和单元格：可以稍微减小字体或内边距，以在小屏幕上容纳更多内容 */
+    .course-schedule th {
+        font-size: 12px; 
+    }
+    
+    /* 时间列：可以稍微减小宽度 */
+    .time-col {
+        width: 40px; 
+    }
+
+    /* 课程内容：字体缩小以适应更小的空间 */
+    .course-content {
+        font-size: 9px;
+    }
+}
