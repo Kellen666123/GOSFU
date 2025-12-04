@@ -1,0 +1,287 @@
+/* 全局重置 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* 模拟的背景色 */
+    color: #333;
+}
+
+a {
+    color: #004a99; /* 链接颜色 */
+    text-decoration: none;
+    display: block; /* 让链接独占一行 */
+    padding: 2px 0;
+    font-size: 13px;
+}
+
+/* 顶部导航栏 (红色条) */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c70039; /* 截图中的红色 */
+    color: white;
+    padding: 5px 20px;
+    height: 40px;
+}
+
+.top-bar-left {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.top-bar-right .icon {
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* 主容器：包含左侧导航和内容区 */
+.main-container {
+    display: flex;
+    max-width: 1400px; /* 限制最大宽度 */
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 左侧垂直导航栏 */
+.left-nav {
+    width: 180px;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ddd;
+}
+
+.nav-item {
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    background-color: white;
+    border-right: none;
+    border-left: 4px solid #c70039; /* 激活状态的红色边框 */
+    font-weight: bold;
+}
+
+/* 主要内容区域 */
+.content-area {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.content-header {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.student-id {
+    font-weight: normal;
+    color: #666;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+/* 主内容和右侧边栏的布局 */
+.main-content-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+/* 左侧的主信息模块容器 */
+.main-info-panels {
+    flex: 1; /* 占据剩余的大部分空间 */
+}
+
+/* 右侧边栏 */
+.right-sidebar {
+    width: 250px; /* 固定宽度 */
+    flex-shrink: 0; /* 不被压缩 */
+}
+
+/* 信息面板样式（Academics, Finances 等） */
+.info-panel {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 0;
+}
+
+.panel-title {
+    background-color: #f7f7f7;
+    color: #c70039; /* 截图中的标题颜色 */
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.panel-body {
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.link-column {
+    flex: 0 0 160px; /* 固定宽度 */
+}
+
+/* 信息/警告框样式 */
+.message-box {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #c8c8c8;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.info-icon {
+    font-size: 18px;
+    color: #004a99;
+    font-style: normal;
+    line-height: 1;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.message-box .note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.action-links {
+    flex-direction: column;
+    display: flex;
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+.other-academic, .message-box.small-note {
+    border-top: 1px solid #ddd;
+    padding: 5px 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.other-academic a {
+    flex-grow: 1;
+}
+
+.info-icon.small {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* 右侧边栏模块样式 */
+.sidebar-block {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+}
+
+.sidebar-block .block-title {
+    color: #c70039;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.sidebar-block p {
+    font-size: 13px;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.search-button {
+    width: 100%;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border: 1px solid #bbb;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sidebar-block.enrollment {
+    background-color: #fff;
+}
+
+.sidebar-block a {
+    padding: 2px 0;
+}
+
+/* --- 新增：主页课程列表样式 --- */
+
+/* 重新定义 panel-body 布局，以容纳课程列表 */
+.info-panel .panel-body.full-width {
+    display: grid;
+    /* 定义网格布局：链接列 | 课程列表列 | 动作链接列 */
+    grid-template-columns: 160px 1fr 200px;
+    gap: 20px;
+    padding: 10px;
+}
+
+/* 课程列表容器 */
+.course-list-box {
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    padding: 8px;
+    font-size: 13px;
+}
+
+/* 课程列表头部 */
+.course-list-box .list-header {
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 单个课程项 */
+.course-item {
+    padding: 3px 0;
+    line-height: 1.4;
+    display: flex; /* 使用 flex 让代码和详情对齐 */
+}
+
+/* 课程代码（加粗） */
+.course-item .course-code {
+    font-weight: bold;
+    color: #004a99;
+    flex-basis: 90px; /* 给课程代码一个固定宽度 */
+    flex-shrink: 0;
+}
+
+/* 课程详情（斜体，颜色略浅） */
+.course-item .course-details {
+    color: #666;
+    font-style: italic;
+    flex-grow: 1;
+}
+
+/* 调整动作链接的位置到网格最右侧 */
+.action-links {
+    flex-direction: column;
+    display: flex;
+    padding-top: 10px;
+    margin-left: 0; /* 重置之前的 margin */
+    align-items: flex-end; /* 右对齐链接 */
+}
+
+/* 隐藏旧的 "You are not enrolled" 框，因为我们已经用新列表替换了它 */
+.message-box {
+    display: none; 
+}
