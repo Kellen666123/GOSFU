@@ -286,81 +286,56 @@ a {
     display: none; 
 }
 
-/* --- 媒体查询：针对屏幕宽度小于 768px 的设备 (例如手机和平板) --- */
+
+/* --- 响应式设计修正 (styles.css) --- */
+
+/* 1. 修正顶栏和主体宽度问题 */
+.main-container {
+    /* 移除 PC 端的最大宽度限制，让它在手机上可以占据 100% 宽度 */
+    max-width: 100%;
+}
+
+/* 2. 在窄屏上修正 Academic 模块的布局 */
 @media (max-width: 768px) {
     
-    /* 1. 主容器：取消最大宽度限制，让内容充满屏幕 */
-    .main-container {
-        max-width: 100%;
-        margin: 0;
-        box-shadow: none;
-        flex-direction: column; /* 将主容器堆叠显示 (左导航在最上面) */
+    /* 修正顶部红色条的宽度和内边距 */
+    .top-bar {
+        padding: 5px 10px;
     }
 
-    /* 2. 左侧导航栏 (Left-Nav): 变成横向并隐藏，仅在需要时显示 */
-    .left-nav {
-        width: 100%;
-        border-right: none;
-        /* 在手机上，我们通常会把侧边栏藏起来，这里先把它横向展开，并取消激活边框 */
-        display: none; /* 暂时隐藏，因为不需要它一直显示 */
-    }
-
-    /* 3. 主要内容区域 (Main-Content): 占据全部宽度 */
+    /* 修正主容器的左右内边距 */
     .content-area {
         padding: 10px;
     }
-    
-    /* 4. 主内容和右侧边栏的布局：堆叠显示 */
+
+    /* 修正主内容区域和右侧边栏在手机上改为垂直堆叠 */
     .main-content-wrapper {
-        flex-direction: column; /* 从左右并列改为上下堆叠 */
-        gap: 10px;
+        flex-direction: column;
+        gap: 15px;
     }
-    
-    /* 5. 右侧边栏 (Right-Sidebar): 占据全部宽度，并调整布局 */
+
+    /* 右侧边栏在手机上应占满宽度 */
     .right-sidebar {
-        width: 100%;
-        order: -1; /* 将侧边栏移到顶部，让主要内容先显示 */
+        width: 100%; 
+        order: -1; /* 将侧边栏移到顶部，如果需要 */
     }
-    
-    /* 6. 信息面板 (Academics, Finances 等): 调整内部布局 */
-    .info-panel .panel-body {
-        /* 针对 Academics 模块的新布局 */
-        flex-direction: column; /* 链接、课程列表、动作链接全部垂直堆叠 */
-        display: flex; /* 强制使用 flex 垂直布局 */
+
+    /* 修正 Academics 模块内的网格布局 */
+    .info-panel .panel-body.full-width {
+        /* 在手机上改为垂直堆叠布局 */
+        grid-template-columns: 1fr; /* 仅一列 */
         gap: 10px;
         padding: 10px;
     }
-
-    /* 7. Academics 模块的 Grid 布局调整 */
-    .info-panel .panel-body.full-width {
-         /* 取消 Grid 布局，恢复为垂直堆叠 */
-        grid-template-columns: 1fr; 
-        gap: 10px;
-    }
     
-    /* 8. 课程列表：调整宽度 */
+    /* 课程列表和动作链接在手机上需要全宽显示 */
     .link-column {
-        flex: auto; /* 不再限制固定宽度 */
-        width: 100%;
+        flex: auto;
     }
     
-    /* 9. 动作链接：靠左对齐 */
+    /* 确保动作链接在手机上左对齐，而不是右侧对齐 */
     .action-links {
-        align-items: flex-start; /* 左对齐链接 */
+        align-items: flex-start; 
+        padding-top: 0;
     }
-
-    /* 10. 课程表页面（schedule.html）的表格适配 */
-    .course-schedule {
-        width: 100%; /* 课程表宽度充满屏幕 */
-        min-width: 700px; /* 保持最小宽度以防止时间网格混乱 */
-        /* 启用水平滚动条 */
-        display: block;
-        overflow-x: auto; 
-    }
-    
-    .schedule-container {
-        padding: 0;
-        justify-content: flex-start; /* 靠左对齐，方便滚动 */
-    }
-
 }
